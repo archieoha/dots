@@ -1,0 +1,50 @@
+# --- Үндсэн тохиргоо ---
+set ifs "\n"
+set tabstop 4
+set shell sh
+set icons
+set scrolloff 3
+set hiddenfiles true
+set previewer ~/.config/lf/preview.sh
+set cleaner ~/.config/lf/clean_preview.sh
+set incsearch true
+set mouse true
+set drawbox
+set roundbox
+set info "size"
+set clearer 'kitty +icat --clear --stdin no'
+# Kitty терминалын зураг харуулах протоколыг ашиглах тул SIXEL-ийг идэвхгүй болгоно.
+set sixel false
+
+# --- Файл нээх тохиргоо ---
+# Файл нээх тусгай скрипт буюу команд
+cmd open &{{
+    # Аюулгүй байдлын үүднээс $f хувьсагчийг "" дотор бичнэ
+    case "$(file -b --mime-type "$f")" in
+        text/*) $EDITOR "$f" ;;
+        application/pdf) zathura "$f" > /dev/null 2>&1 & ;;
+        image/*) setsid -f feh "$f" > /dev/null 2>&1 ;;
+        video/*) setsid -f mpv "$f" > /dev/null 2>&1 ;;
+        audio/*) setsid -f mpv "$f" > /dev/null 2>&1 ;;
+        *) xdg-open "$f" > /dev/null 2>&1 & ;; # Бусад тохиолдолд xdg-open ашиглана
+    esac
+}}
+
+# --- Товчлуурын холболт (Key Mappings) ---
+# 'l' эсвэл 'enter' товчлуур дарж файл нээнэ
+map l open
+map <enter> open
+
+# 'e' товчлуур дарж текст засварлагчийг дуудна ($EDITOR)
+map e $EDITOR $f
+
+# 'w' товчлуур дарж сонгосон зургийг дэлгэцийн зураг болгоно (swww ашиглан)
+map w &{{
+    case "$(file -b --mime-type "$f")" in
+        image/*) swww img "$f" --transition-type any ;;
+    esac
+}}
+
+# Бусад тохиргоо
+map \ clear
+map <backspace2> calcdirsize

@@ -1,0 +1,38 @@
+# ========== Keybindings ==========
+#Vim-like navigation
+map j scroll down
+map k scroll up
+map h scroll left
+map l scroll right
+map gg goto top
+map G goto bottom
+# # Zooming
+map zi zoom in
+map zo zoom out
+map zz zoom 100
+#
+# # Recolor toggle
+# map r toggle recolor
+#
+# # Fit modes
+map f toggle fullscreen
+map F toggle statusbar
+map a adjust_window best-fit
+#
+# # Bookmarks
+map b add_bookmark
+map B list_bookmarks
+#
+# # Quit
+map q quit
+# #
+set recolor "true"
+set default-bg rgba(1,1,1,1.1)
+set recolor-lightcolor rgba(0,0,1,1)
+set adjust-open "width"
+set guioptions ""
+#set first-page-column 1:1 
+set sandbox none
+set selection-clipboard clipboard
+set smooth-scroll true
+
