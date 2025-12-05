@@ -1,0 +1,6 @@
+require("nogto.lazy")
+require("nogto.core.options")
+require("nogto.core.mappings")
+require("nogto.config.lualine")
+require("nogto.config.treesitter")
+require("nogto.plugins.lsp.mason")

@@ -44,10 +44,10 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 export PATH="$HOME/.local/bin:$PATH"
-alias g='xdg-open https://google.com'
+alias g='firefox https://google.com'
 alias y='xdg-open https://youtube.com'
-alias f='xdg-open https://facebook.com'
-alias m='xdg-open https://messenger.com'
+alias f='firefox https://facebook.com'
+alias m='firefox https://messenger.com'
 net() {
     if [[ -z "$1" ]]; then
         echo "URL not fount!"
@@ -61,6 +61,19 @@ net() {
         url="https://$url"
     fi
 
-    xdg-open "$url"
+    firefox "$url"
 }
+
+# --- Pacman aliases ---
+alias upd='sudo pacman -Syyu'     # Mirror refresh + full upgrade
+alias up='sudo pacman -Syu'       # Full system upgrade
+alias in='sudo pacman -S'         # Install package
+alias rem='sudo pacman -Rns'      # Remove + dependencies
+alias se='pacman -Ss'             # Search repo
+alias li='pacman -Qs'             # Search installed packages
+
+# --- YAY (AUR) aliases ---
+alias yup='yay -Syu --nocleanmenu --nodiffmenu'  # Full update repo + AUR
+alias yi='yay -S'                                 # Install AUR/repo pkg
+alias yse='yay -Ss'                                # Search AUR/repo
 
